@@ -12,10 +12,19 @@ import GlyuckDataGrid
 
 class MultiplicationTableViewController: UIViewController, DataGridViewDataSource, DataGridViewDelegate {
     @IBOutlet weak var dataGridView: DataGridView!
-
-    static override func initialize() {
-        super.initialize()
-
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+        MultiplicationTableViewController.initViews();
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)!
+    }
+   static func initViews() {
         let dataGridAppearance = DataGridView.glyuck_appearanceWhenContained(in: self)!
         dataGridAppearance.row1BackgroundColor = nil
         dataGridAppearance.row2BackgroundColor = nil
@@ -44,11 +53,14 @@ class MultiplicationTableViewController: UIViewController, DataGridViewDataSourc
 
         columnHeaderAppearance.backgroundColor = UIColor(white: 0.95, alpha: 1)
         let labelAppearance = UILabel.glyuck_appearanceWhenContained(in: self)!
-        labelAppearance.appearanceFont = UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
+        labelAppearance.appearanceFont = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
         labelAppearance.appearanceTextAlignment = .center
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad();
+        
+        
         dataGridView.delegate = self
         dataGridView.dataSource = self
 

@@ -17,7 +17,7 @@ open class DataGridViewContentCell: DataGridViewBaseCell {
         
         if let labelAppearance = UILabel.glyuck_appearanceWhenContained(in: DataGridViewContentCell.self) {
             if #available(iOS 8.2, *) {
-                labelAppearance.appearanceFont = UIFont.systemFont(ofSize: 14, weight: UIFontWeightLight)
+                labelAppearance.appearanceFont = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
             } else {
                 labelAppearance.appearanceFont = UIFont(name: "HelveticaNeue-Light", size: 14)
             }
@@ -26,8 +26,19 @@ open class DataGridViewContentCell: DataGridViewBaseCell {
         }
         
     }()
-    open override static func initialize() {
-        super.initialize()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame);
         _ = DataGridViewContentCell.__once
     }
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+//    open override static func initialize() {
+//        super.initialize()
+//        _ = DataGridViewContentCell.__once
+//    }
 }

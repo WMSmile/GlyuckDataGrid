@@ -8,8 +8,5 @@ end
 target 'GlyuckDataGrid_Tests' do
   pod "GlyuckDataGrid", :path => "../"
 
-  pod 'Quick'
-  pod 'Nimble'
-#  pod 'FBSnapshotTestCase'
-#  pod 'Nimble-Snapshots'
+
 end
